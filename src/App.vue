@@ -279,13 +279,10 @@
         <div class="col-12">
           <div class="cta text-center">
             <h1 class="cta-title">
-              Getting started is easy. Create your account now.
+              Want to join or create events? Please :        
             </h1>
-            <a class="btn-shadow btn-shadow-info mr-md-1" href="#">
-              30 day free trial
-            </a>
-            <a class="btn-outline ml-md-1" href="#">
-              Explore features
+            <a class="btn-shadow btn-shadow-info mr-md-1" href="#/login">
+              Log In
             </a>
           </div>
         </div>

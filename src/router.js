@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import EventsShow from "./views/EventsShow.vue";
+import Login from "./views/Login.vue";
 
 Vue.use(Router);
 
@@ -25,6 +26,11 @@ export default new Router({
       path: "/events/show/:id",
       name: "events-show",
       component: EventsShow
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login
     }
   ]
 });

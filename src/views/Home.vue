@@ -6,8 +6,18 @@
     <div v-for="event in events">
       <h2> {{event.title}}</h2>
     </div> -->
-      <div class="blog-cols-header">
+  <div class="blog-cols-header">
     <div class="container">
+      <!-- Large modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create a New Event!</button>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
       <h1>
         Get the latest thoughts & news
       </h1>
@@ -34,6 +44,7 @@
             <p class="post-description">
               {{event.address}}
             </p>
+            <a v-bind:href=" '/#/events/show/' + event.id ">More info</a>
           </div>
         </div>
       </a>
@@ -76,9 +87,6 @@
 }
 </style>
 
-#searchbox {
-height: 100px
-}
 
 <script>
 /* global google */
@@ -96,7 +104,7 @@ export default {
   mounted: function() {
     this.map = new google.maps.Map(document.getElementById("map"), {
       zoom: 3,
-      center: myLatLng
+      center: { lat: 35.344, lng: 280.036 }
     });
     axios.get("http://localhost:3000/api/events").then(response => {
       this.events = response.data;
@@ -133,7 +141,8 @@ export default {
         map: this.map,
         title: event.title
       });
-    }
+    },
+    showEvent: function(event) {}
   },
   computed: {}
 };

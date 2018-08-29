@@ -51,10 +51,10 @@ export default {
           {{event.date}}
         </p>
         <a href="#" class="btn-get-tickets">
-          Get tickets
+          RSVP
         </a>
         <p class="m-0">
-          {{formattedAddress}}
+          {{event.tags}}
         </p>
       </div>
     </div>
@@ -67,13 +67,10 @@ export default {
         </div>
         <div class="col-lg-5 order-lg-1">
           <h1 class="event-title">
-            Get inspired by the knowledge of world's best speakers
+            {{event.title}}
           </h1>
           <p>
-            Spacial is an advanced theme solution for desktop, tablet, and mobile devices. It works in all browsers and your clients can pay instantly, to improve their experience at all times anywhere they go. Pick the pages that describe your business the best and improve your users experience. Track your progress and learn along all the way.
-          </p>
-          <p>
-            Focus on creating and growing your projects and websites, and we‘ll take care of spinning up new designs for your users and making sure they’re great.
+            {{event.description}}
           </p>
         </div>
       </div>
@@ -90,19 +87,11 @@ export default {
         <div class="col-md-4 address">
           <h5>Address</h5>
           <p class="mt-4">
-            Main Principal Conference
+            {{formattedAddress}}
           </p>
-          <p>
-            10th Street 12/3 4580 San Francisco, Ca.
+           <p class="mt-4">
           </p>
-          <p class="mb-0">
-            <i class="ion-android-call"></i>
-            01-800 555-3312
-          </p>
-          <p>
-            <i class="ion-ios-email-outline"></i>
-            support@spacialconf.com
-          </p>
+
           <a class="social-link" href="#">
             <i class="ion-social-twitter"></i>
           </a>
@@ -112,6 +101,38 @@ export default {
         </div>
         <div class="col-md-8">
           <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="event-tickets">
+    <div class="container">
+      <div class="row">
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="ticket">
+            <p class="ticket-title">
+              Comments
+            </p>
+            <hr>
+            <h5>...</h5>
+            <p>
+              {{event.comments}}
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="ticket">
+            <p class="ticket-title">
+              Attendees
+            </p>
+            <hr>
+            <h5>...</h5>
+            <p>
+              {{event.attendees}}
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -155,7 +176,7 @@ export default {
     codeAddress: function() {
       var geocoder = new google.maps.Geocoder();
       var that = this;
-      var formattedAddress = this.longAddress;
+      // var formattedAddress = this.longAddress;
       var codedAddress = this.codedAddress;
       var event = this.event;
       var address = event.address;
@@ -166,7 +187,7 @@ export default {
         };
         var longAddressResults = results[0].formatted_address;
         if (status === "OK") {
-          formattedAddress = longAddressResults;
+          that.formattedAddress = longAddressResults;
           codedAddress.push(latlng);
           that.createMarker(event, latlng);
           that.map.setCenter(latlng);
