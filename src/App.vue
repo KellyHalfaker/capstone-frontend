@@ -2,9 +2,9 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light" role="navigation">
     <div class="container flex-lg-column">
-      <a class="navbar-brand m-0 mt-lg-4" href="index.html">
+      <a class="navbar-brand m-0 mt-lg-4" v-bind:href="'/#/'">
         <img src="images/logo-alt-b.png" class="d-none d-lg-inline mr-2 w-25" />
-        Spacial
+        Flock
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
         <span class="navbar-toggler-icon"></span>
@@ -279,61 +279,12 @@
         <div class="col-12">
           <div class="cta text-center">
             <h1 class="cta-title">
-              Want to join or create events? Please :        
+              Want to join, create, or view more info on events? Please :        
             </h1>
             <a class="btn-shadow btn-shadow-info mr-md-1" href="#/login">
               Log In
             </a>
           </div>
-        </div>
-      </div>
-      <div class="row menu">
-        <div class="col-md-3 col-lg-2">
-          <h3 class="menu-title">Products</h3>
-          <a class="menu-link" href="#">Spacial Enterprise</a>
-          <a class="menu-link" href="#">Spacial Healthcare</a>
-          <a class="menu-link" href="#">Spacial Security</a>
-        </div>
-        <div class="col-md-3 col-lg-2">
-          <h3 class="menu-title">Features</h3>
-          <a class="menu-link" href="#">Employees</a>
-          <a class="menu-link" href="#">Integrations</a>
-          <a class="menu-link" href="#">Subscriptions</a>
-          <a class="menu-link" href="#">Online payments</a>
-          <a class="menu-link" href="#">Antifraud system</a>
-          <a class="menu-link" href="#">Pricing</a>
-        </div>
-        <div class="col-md-3 col-lg-2">
-          <h3 class="menu-title">Resources</h3>
-          <a class="menu-link" href="#">Support center</a>
-          <a class="menu-link" href="#">Documentation</a>
-          <a class="menu-link" href="#">API reference</a>
-          <a class="menu-link" href="#">Customer stories</a>
-        </div>
-        <div class="col-md-3 col-lg-2">
-          <h3 class="menu-title">About</h3>
-          <a class="menu-link" href="#">What we believe</a>
-          <a class="menu-link" href="#">Careers</a>
-          <a class="menu-link" href="#">Partners</a>
-          <a class="menu-link" href="#">Press kit</a>
-          <a class="menu-link" href="#">Media</a>
-        </div>
-        <div class="col-md-3 col-lg-2">
-          <h3 class="menu-title">Get in touch</h3>
-          <a class="menu-link" href="#">support@spacial.com</a>
-          <a class="menu-link" href="#">(123) 455-1123</a>
-          <a class="menu-link" href="#">9am - 6pm CST</a>
-        </div>
-        <div class="col-md-3 col-lg-2 text-center">
-          <a class="social-link" href="#">
-            <i class="ion-social-twitter"></i>
-          </a>
-          <a class="social-link" href="#">
-            <i class="ion-social-facebook"></i>
-          </a>
-          <a class="social-link" href="#">
-            <i class="ion-social-instagram"></i>
-          </a>
         </div>
       </div>
     </div>
