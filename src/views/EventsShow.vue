@@ -60,9 +60,6 @@ export default {
               RSVP
             </a>
           </div>
-          <p class="m-0">
-            {{event.tags}}
-          </p>
         </div>
       </div>
     </div>
@@ -110,6 +107,9 @@ export default {
             <p>
               {{event.description}}
             </p>
+            <div v-for="tag in event.tags">
+            <span class="badge badge-dark">{{tag}}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -153,10 +153,11 @@ export default {
                 Comments
               </p>
               <hr>
-              <h5>...</h5>
+              <div v-for="comment in comments">
               <p>
-                {{ event.comments }}
+                {{ event.comment }}
               </p>
+            </div>
             </div>
           </div>
           <div class="col-md-6">
@@ -165,12 +166,14 @@ export default {
                 Attendees
               </p>
               <hr>
-              <h5>...</h5>
-              <p>
-                {{ attendees }}
-              </p>
+              <div v-for="attendee in attendees">
+              <h6>
+                {{ attendee }}
+              </h6>
+            </div>
             </div>
           </div>
+          <button class="btn btn-danger" v-on:click = "deleteEvent()">Delete Event</button>
         </div>
       </div>
     </div>
@@ -285,6 +288,13 @@ export default {
       } else {
         this.attending = false;
       }
+    },
+    deleteEvent: function() {
+      axios
+        .delete("http://localhost:3000/api/events/" + this.event.id)
+        .then(response => {
+          this.$router.push("/");
+        });
     }
   },
   computed: {}

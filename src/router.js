@@ -4,6 +4,7 @@ import Home from "./views/Home.vue";
 import EventsShow from "./views/EventsShow.vue";
 import Login from "./views/Login.vue";
 import Logout from "./views/Logout.vue";
+import UserEvents from "./views/UserEvents.vue";
 
 Vue.use(Router);
 
@@ -37,6 +38,11 @@ export default new Router({
       path: "/logout",
       name: "logout",
       component: Logout
+    },
+    {
+      path: "/attending",
+      name: "attending",
+      component: UserEvents
     }
   ]
 });

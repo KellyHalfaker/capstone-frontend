@@ -1,23 +1,29 @@
 <template>
   <div class="home">
-    <div id="map"></div>
+    
 <!--     <button v-on:click="codeAddresses()">Click</button>
     <h1>Events</h1>
     <div v-for="event in events">
       <h2> {{event.title}}</h2>
     </div> -->
   <div class="blog-cols-header">
+    <div id="map"></div>
     <div class="container">
       <!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create a New Event!</button>
-<div></div>
+<button class="btn-shadow btn-info" id="create-button" data-toggle="modal" data-target="#exampleModal">Create a New Event!</button>
 <div>
-  Search: <input type="text" v-model="searchFilter">
+  <h5>
+  Search: <input type="text" v-model="searchFilter" id="searchbar">
+</h5>
 </div>
+<button class="btn-shadow btn-shadow-sm btn-shadow-dark tag-button" v-on:click="searchFilter = 'TCG'">TCG</button>
+<button class="btn-shadow btn-shadow-sm btn-shadow-dark tag-button" v-on:click="searchFilter = 'Dungeons and Dragons'">Dungeons and Dragons</button>
+<button class="btn-shadow btn-shadow-sm btn-shadow-dark tag-button" v-on:click="searchFilter = 'Pokemon'">Pokemon</button>
 
 <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+      <h3 id="modal-title"> Create an Event: </h3>
       <form v-on:submit.prevent="submit()">
         <div class="form-group">
           <label>Event Title:</label>
@@ -35,10 +41,12 @@
           <label>Date of Event:</label>
           <input type="text" class="form-control" v-model="date">
         </div>  
-        <div class="form-group">
+        <div class="form-group" id="tags">
           <label>Event Tags (Separated By Commas)</label>
           <input type="text" class="form-control" v-model="tag_names">
-          <input type="button" class="btn btn-primary" value="Auto-Generate Tags" v-on:click="generateTags()">
+        </div>
+        <div>
+          <input type="button" class="btn btn-primary" id = "generate-tags" value="Auto-Generate Tags" v-on:click="generateTags()">
         </div> 
         <div class="form-group">
           <label>Event Image URLs (Separated by Commas)</label>
@@ -54,7 +62,7 @@
 
   <div class="blog-cols-wrapper">
     <div class="container">
-      <a v-bind:href=" '/#/events/show/' + event.id " class="post" v-for="event in filterBy(events, searchFilter, 'title', 'tags')">
+      <a v-bind:href=" '/#/events/show/' + event.id " class="post" v-for="event in filterBy(events, searchFilter, 'title', 'tags', 'address')">
         <div class="post-wrapper">
           <div class="post-bg" :style="{ backgroundImage: 'url(' + event.images[0] + ')' }">
           <!-- <div class="post-bg" :style="`background-image: url('${event.images[0]}');`"> -->
@@ -64,6 +72,7 @@
               {{ event.title }}
             </div>
             <div class="post-min-read">
+              <span class="ion-ios-pricetag-outline"></span>
               {{event.tags.join(", ")}}
             </div>
             <p class="post-description">
@@ -75,28 +84,7 @@
     </div>
   </div>
 <!-- <div class="post-bg" style="background-image: url('images/unsplash/photo-1466854076813-4aa9ac0fc347.jpg');"> -->
-  <nav class="blog-pager">
-    <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#">&larr; Previous</a>
-      </li>
-      <li class="page-item active">
-        <a class="page-link" href="#">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">4</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next &rarr;</a>
-      </li>
-    </ul>
-  </nav>
+
   </div>
 </template>
 <style>
@@ -108,6 +96,44 @@
 }
 #searchbox {
   height: 100px;
+}
+
+#create-button {
+  margin-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+}
+
+#generate-tags {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.btn {
+  margin: 15px;
+}
+
+.form-group {
+  margin: 15px;
+}
+
+.tag-button {
+  margin-right: 10px;
+}
+
+#tags {
+  margin-bottom: 0px;
+}
+
+#searchbar {
+  width: 290px;
+  font-size: 18px;
+}
+
+#modal-title {
+  margin: auto;
+  margin-top: 20px;
 }
 </style>
 
@@ -125,7 +151,7 @@ export default {
       title: "",
       description: "",
       address: "",
-      formattedAddress: "henlo",
+      formattedAddress: "",
       date: "",
       tag_names: "",
       image_urls: "",
